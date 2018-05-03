@@ -13,7 +13,10 @@ pipeline {
                 sh 'printenv'
                 sh 'ls'
                 sh 'mvn clean package -Dmaven.test.skip=true'
-                sh 'mvn sonar:sonar'
+                echo "Inicializando sonar"
+                withSonarQubeEnv('SonarQube_Akzio') {
+                    sh 'mvn sonar:sonar'
+                }
                 echo "Analisis terminado"
             }
         }
