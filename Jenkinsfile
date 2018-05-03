@@ -12,7 +12,7 @@ pipeline {
             steps {
                 sh 'printenv'
                 sh 'ls'
-                sh 'mvn clean package'
+                sh 'mvn clean package -Dmaven.test.skip=true'
                 script {
                     echo "Inicializando sonar"
                     def scanner = tool 'SonarScanner';
