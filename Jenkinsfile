@@ -23,11 +23,11 @@ pipeline {
             } 
             post{
                 success {
-                    options {
-                        timeout(time: 1, unit: 'MINUTES') 
-                    }
                     echo "Push exitoso a master, actualizando jars..."
-                    sh 'mvn deploy'
+                    timeout(time: 20, unit: 'SECONDS'){
+                        sh 'mvn deploy'
+                    }
+                    
                 }
                 failure {
                     echo "Error al hacer push"
