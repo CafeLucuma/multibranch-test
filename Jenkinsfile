@@ -23,7 +23,7 @@ pipeline {
 
         stage("SonarQube Quality Gate") {
             options{
-                timeout(time: 1, unit: 'HOURS')
+                timeout(time: 1, unit: 'MINUTES')
             }
             steps{
                 echo "Esperando resultado de quality gate..."
