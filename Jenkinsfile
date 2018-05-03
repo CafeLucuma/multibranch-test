@@ -18,7 +18,7 @@ pipeline {
         stage('push') {
             steps{
                 sh("git tag -a ${BUILD_NUMBER} -m 'Jenkins'")
-                sh("git push https://$env.git_creds_USR:env.git_creds_PSW@github.com/CafeLucuma/multibranch-test.git HEAD:master --tags")
+                sh("git push https://$env.git_creds_USR:$env.git_creds_PSW@github.com/CafeLucuma/multibranch-test.git HEAD:master --tags")
             }
             
         }
