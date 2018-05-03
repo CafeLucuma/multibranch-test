@@ -8,10 +8,45 @@ pipeline {
         jdk 'jdk'
     }
     stages {
-        stage ('Common') {
-            steps{
-                echo "printing env"
+        stage('Sonar analysis') {
+            steps {
                 sh 'printenv'
+                sh 'ls'
+                script {
+                    echo "Inicializando sonar"
+                    def scanner = tool 'SonarScanner';
+                    withSonarQubeEnv('SonarQube_Akzio') {
+                        echo "Sonar scanner path: " + scanner
+                        sh "${scanner}/bin/sonar-scanner -X"
+                    }
+                }
+                echo "Analisis terminado"
+            }
+        }
+
+        stage("SonarQube Quality Gate") {
+            options{
+                timeout(time: 1, unit: 'HOURS')
+            }
+            steps{
+                echo "Esperando resultado de quality gate..."
+                script {
+                    def qg = waitForQualityGate()
+                    if (qg.status != 'OK') {
+                        error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                    }
+                    echo "Estado de ĺa quality gate: ${qg.status}"
+                }
+            }
+            post {
+                success {
+                    echo "Analisis de sonarQube ok, pasando a unit testing"
+                }
+            }
+        }
+
+        stage ('Unit testing') {
+            steps{
                 sh 'mvn clean install'
             }
             post {
