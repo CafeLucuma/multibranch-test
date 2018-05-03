@@ -2,8 +2,10 @@ pipeline {
     agent any
     stages {
         stage {
-            echo "printing env"
-            sh 'printenv'
+            steps{
+                echo "printing env"
+                sh 'printenv'
+            }
         }
         stage('Deliver for development') {
             when {
