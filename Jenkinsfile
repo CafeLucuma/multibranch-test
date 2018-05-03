@@ -13,14 +13,7 @@ pipeline {
                 sh 'printenv'
                 sh 'ls'
                 sh 'mvn clean package -Dmaven.test.skip=true'
-                script {
-                    echo "Inicializando sonar"
-                    def scanner = tool 'SonarScanner';
-                    withSonarQubeEnv('SonarQube_Akzio') {
-                        echo "Sonar scanner path: " + scanner
-                        sh "${scanner}/bin/sonar-scanner -X"
-                    }
-                }
+                sh 'mvn sonar:sonar'
                 echo "Analisis terminado"
             }
         }

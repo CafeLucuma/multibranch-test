@@ -1,0 +1,6 @@
+projectKey=my_app_pipeline
+serverUrl=http://sonar.akzio.cl
+serverVersion=7.1.0.11001
+dashboardUrl=http://sonar.akzio.cl/dashboard/index/my_app_pipeline
+ceTaskId=AWMnpfXoiMXYoAFoHsGA
+ceTaskUrl=http://sonar.akzio.cl/api/ce/task?id=AWMnpfXoiMXYoAFoHsGA
