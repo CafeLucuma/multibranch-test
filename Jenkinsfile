@@ -15,10 +15,20 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
+
         stage('push') {
             steps{
                 sh("git tag -a ${BUILD_NUMBER} -m 'Jenkins'")
                 sh("git push https://$env.git_creds_USR:$env.git_creds_PSW@github.com/CafeLucuma/multibranch-test.git HEAD:master --tags")
+            } 
+            post{
+                success {
+                    echo "Push exitoso a master, actualizando jars..."
+                    sh 'mvn deploy'
+                }
+                failure {
+                    echo "Error al hacer push"
+                }
             }
             
         }
