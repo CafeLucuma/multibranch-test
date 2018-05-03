@@ -12,6 +12,7 @@ pipeline {
             steps {
                 sh 'printenv'
                 sh 'ls'
+                sh 'mv compile'
                 script {
                     echo "Inicializando sonar"
                     def scanner = tool 'SonarScanner';
