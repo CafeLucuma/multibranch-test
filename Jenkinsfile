@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools{
+        maven 'maven'
+    }
     stages {
         stage ('Common'){
             steps{
@@ -13,6 +16,7 @@ pipeline {
             }
             steps {
                 echo "running development"
+                sh 'mvn clean install'
             }
         }
         
