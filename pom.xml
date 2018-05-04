@@ -29,7 +29,7 @@
   <properties>
     <maven.compiler.source>1.6</maven.compiler.source>
     <maven.compiler.target>1.6</maven.compiler.target>
-
+    
     <sonar.host.url>http://sonar.akzio.cl/</sonar.host.url>
     <sonar.login>6c1f3a5d8a703f092b72045ed44e0e95f5093730</sonar.login>
     <sonar.projectKey>my_app_pipeline</sonar.projectKey>

@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    environment { 
-        git_creds = credentials('github-credentials')
-    }
     tools {
         maven 'maven'
         jdk 'jdk'
