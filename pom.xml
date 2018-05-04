@@ -9,11 +9,11 @@
   <url>http://maven.apache.org</url>
   <distributionManagement>
     <snapshotRepository>
-      <id>nexus-snapshots</id>
+      <id>nexus</id>
       <url>http://sonar.akzio.cl:8081/repository/maven-snapshots/</url>
     </snapshotRepository>
     <repository>
-      <id>nexus-releases</id>
+      <id>nexus</id>
       <url>http://sonar.akzio.cl:8081/repository/maven-releases/</url>
     </repository>
   </distributionManagement>
