@@ -43,6 +43,12 @@ pipeline {
                 sh 'mvn clean install'
             }
             post {
+                success {
+                    echo "Push exitoso a master, actualizando jars..."
+                    timeout(time: 20, unit: 'SECONDS'){
+                        sh 'mvn deploy'
+                    }
+                }
                 failure {
                     echo "Fallaron los tests"
                 }
