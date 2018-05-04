@@ -20,7 +20,6 @@ pipeline {
                 echo "Analisis terminado"
             }
         }
-
         stage("SonarQube Quality Gate") {
             options{
                 timeout(time: 1, unit: 'MINUTES')
